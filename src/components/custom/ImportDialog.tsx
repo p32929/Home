@@ -1,7 +1,6 @@
 
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { IUrlButton } from "@/lib/Models";
 import { useForm, SubmitHandler } from "react-hook-form"
 import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
@@ -41,7 +40,7 @@ const ImportDialog: React.FC<Props> = () => {
             const jsonData = JSON.parse(jsonString);
             if (Array.isArray(jsonData)) {
                 for (const item of jsonData) {
-                    if (!item.title || !item.link) {
+                    if (!item.title || !item.link || item.title.length > 20) {
                         return false;
                     }
                 }

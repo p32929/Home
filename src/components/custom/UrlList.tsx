@@ -44,7 +44,7 @@ const UrlList: React.FC<Props> = (props) => {
                     </div>
                 )
             }
-            < div className="p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-10 gap-2" >
+            < div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2" >
                 {
                     states.urls.map((item, urlIndex) => {
                         return <ContextMenu key={urlIndex}>

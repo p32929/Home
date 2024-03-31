@@ -38,6 +38,8 @@ export class Controller {
             ...this.states,
             ...state,
         }
+
+        localStorage.setItem(Constants.STORAGE, JSON.stringify(this.states.urls))
     }
 
     @action

@@ -3,8 +3,7 @@ A Simple homepage extension created using Shadcn, React, TypeScript, usm-redux e
 
 # Screenshot
 
-![p32929-homepage-ext-ezgif com-video-to-gif-converter](https://github.com/p32929/Home/assets/6418354/c14a39e8-6bd7-4fbc-8444-74b08f241ef8)
-
+https://github.com/p32929/Home/assets/6418354/219415be-3ee6-4c29-b363-e422410ff325
 
 # Installation Instructions
 To install the application, follow these steps:

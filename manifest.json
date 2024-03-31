@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "p32929-homepage-ext",
+  "version": "1.0",
+  "description": "A Simple homepage extension created using Shadcn, React, TypeScript, usm-redux etc",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "author": "p32929",
+  "icons": { "16": "home.png", "128": "home.png" },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "p32929-homepage-ext@p32929.github"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+import React from 'react'
+import { controller } from '@/lib/StatesController';
+import { useSelector } from 'react-redux';
+import { Button } from '@/components/ui/button';
+import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from '@/components/ui/context-menu';
+import { IMenuButtons } from '@/lib/Models';
+import { Pencil, Trash } from 'lucide-react';
+
+interface Props {
+
+}
+
+const UrlList: React.FC<Props> = (props) => {
+    const states = useSelector(() => controller.states);
+
+    const menuButtons: IMenuButtons[] = [
+        {
+            icon: Pencil,
+            title: 'Edit',
+            onClick: (param: number) => {
+                console.log(`edit`, param)
+                controller.setState({
+                    editingUrlIndex: param,
+                })
+            }
+        },
+        {
+            icon: Trash,
+            title: 'Delete',
+            onClick: (param: number) => {
+                controller.deleteUrl(param)
+            }
+        },
+    ]
+
+    return (
+        <>
+            {
+                states.urls.length == 0 && (
+                    < div className="px-8 py-6" >
+                        <p className="text-xl font-semibold tracking-tight">
+                            Add your first URL by clicking on the + button
+                        </p>
+                    </div>
+                )
+            }
+            < div className="p-4 grid grid-cols-6 gap-2" >
+                {
+                    states.urls.map((item, urlIndex) => {
+                        return <ContextMenu key={urlIndex}>
+                            <ContextMenuTrigger>
+                                <a className="w-full" href={item.link}>
+                                    <Button className="capitalize w-full " variant="outline">
+                                        {item.title}
+                                    </Button>
+                                </a>
+                            </ContextMenuTrigger>
+
+                            <ContextMenuContent className="w-10">
+                                {
+                                    menuButtons.map((item, index) => {
+                                        return <ContextMenuItem key={index} onClick={() => {
+                                            item.onClick(urlIndex)
+                                        }}>
+                                            {item.title}
+                                        </ContextMenuItem>
+                                    })
+                                }
+                            </ContextMenuContent>
+                        </ContextMenu>
+                    })
+                }
+            </div >
+        </>
+    )
+
+}
+
+export default UrlList;

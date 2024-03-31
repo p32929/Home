@@ -43,11 +43,11 @@ const Header: React.FC<Props> = (props) => {
 
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="container flex h-14 max-w-screen-2xl items-center">
+            <div className="flex h-14 w-full items-center px-6">
                 <div className="flex flex-row w-full justify-between">
                     <div className="flex items-center space-x-2">
                         <Home className="w-4 h-4" />
-                        <span className="hidden font-bold sm:inline-block">
+                        <span className="font-bold sm:inline-block">
                             Home
                         </span>
                     </div>

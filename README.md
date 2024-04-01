@@ -8,7 +8,7 @@ A Simple homepage extension created using Shadcn, React, TypeScript, usm-redux e
 To install the application, follow these steps:
 1. Clone the repository to your local machine.
 2. Navigate to the project folder.
-3. Install the necessary dependencies using npm.
+3. Install the necessary dependencies using npm or yarn.
 4. Build the project.
 
 For Chrome:

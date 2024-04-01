@@ -9,7 +9,7 @@ const HelperTexts: React.FC<Props> = (props) => {
 
     const usages = [
         "Click to open the URL in the same tab",
-        "CTRL + Click to openthe  URL in a new tab",
+        "CTRL + Click to open the  URL in a new tab",
         "Right click on the URL to edit or delete"
     ]
 

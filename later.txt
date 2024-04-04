@@ -1,3 +1,5 @@
 `https://sporting-ivory-emu.faviconkit.com/${extractHostFromUrl(item.link)}/256`
 
 `http://www.google.com/s2/favicons?&sz=64&domain=${item.link}`
+
+`https://favicon.yandex.net/favicon/`

@@ -9,4 +9,5 @@ export interface IMenuButtons {
 export interface IUrlButton {
     title: string
     link: string
+    colors: string[]
 }

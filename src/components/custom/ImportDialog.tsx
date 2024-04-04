@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
+import { cn, getColorFixedUrls } from "@/lib/utils";
 
 
 interface Props {
@@ -26,10 +26,11 @@ const ImportDialog: React.FC<Props> = () => {
         formState: { errors },
     } = useForm<IImportValues>()
 
-    const onSubmit: SubmitHandler<IImportValues> = (data) => {
+    const onSubmit: SubmitHandler<IImportValues> = async (data) => {
         const arr = JSON.parse(data.importText)
+        const narr = await getColorFixedUrls(arr)
         controller.setState({
-            urls: arr,
+            urls: narr,
             isImportDialogOpen: false
         })
         reset()

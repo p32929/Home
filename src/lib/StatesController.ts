@@ -2,6 +2,7 @@ import { state, action, createStore } from 'usm-redux';
 import { compose } from 'redux';
 import { IUrlButton } from '@/lib/Models';
 import { Constants } from '@/lib/Constants';
+import { getColorFixedUrls } from '@/lib/utils';
 
 const composeEnhancers =
     // @ts-ignore
@@ -19,6 +20,11 @@ export interface IStates {
     isImportDialogOpen: boolean,
     editingUrlIndex: number,
     exportText: string,
+}
+
+async function onDataChange(urls: IUrlButton[]) {
+    const nurls = await getColorFixedUrls(urls)
+    localStorage.setItem(Constants.STORAGE, JSON.stringify(urls))
 }
 
 export class Controller {
@@ -39,7 +45,7 @@ export class Controller {
             ...state,
         }
 
-        localStorage.setItem(Constants.STORAGE, JSON.stringify(this.states.urls))
+        onDataChange(this.states.urls)
     }
 
     @action
@@ -48,7 +54,7 @@ export class Controller {
         this.states.isAddDialogOpen = false
         this.states.editingUrlIndex = -1
 
-        localStorage.setItem(Constants.STORAGE, JSON.stringify(this.states.urls))
+        onDataChange(this.states.urls)
     }
 
     @action
@@ -64,7 +70,7 @@ export class Controller {
     deleteUrl(index: number) {
         this.states.urls.splice(index, 1)
 
-        localStorage.setItem(Constants.STORAGE, JSON.stringify(this.states.urls))
+        onDataChange(this.states.urls)
     }
 }
 

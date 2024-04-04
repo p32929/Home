@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from '@/components/ui/context-menu';
 import { IMenuButtons } from '@/lib/Models';
 import { Pencil, Trash } from 'lucide-react';
+import { createGlowingEffect, createNeonGlowEffect, findColorWithMediumLightness } from '@/lib/utils';
 
 interface Props {
 
@@ -47,10 +48,14 @@ const UrlList: React.FC<Props> = (props) => {
             < div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2" >
                 {
                     states.urls.map((item, urlIndex) => {
+                        const medColor = findColorWithMediumLightness(item.colors)
+                        const color = createGlowingEffect(medColor)
+                        const colorNeon = createNeonGlowEffect(medColor)
+
                         return <ContextMenu key={urlIndex}>
                             <ContextMenuTrigger>
                                 <a className="w-full" href={item.link}>
-                                    <Button className="capitalize w-full " variant="outline">
+                                    <Button style={{ color: colorNeon, borderColor: color }} className="capitalize w-full font-bold" variant="outline">
                                         {item.title}
                                     </Button>
                                 </a>

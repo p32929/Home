@@ -2,7 +2,7 @@
 A Simple homepage extension created using Shadcn, React, TypeScript, usm-redux etc
 
 # Screenshot
-![screenshot](https://github.com/p32929/Home/assets/6418354/7fadf2f8-f3a9-4eba-885a-98cdaba5eefc)
+![Screenshot](https://github.com/p32929/Home/assets/6418354/89a9d41a-45c4-4be3-8fa7-2f5e0799d1ce)
 
 # Installation Instructions
 To install the application, follow these steps:
@@ -22,3 +22,6 @@ For Firefox:
 - Open about:addons in Firefox.
 - Access the debug settings by clicking on the settings icon.
 - Load the temporary add-on by selecting the ZIP archive.
+
+# Error while build?
+remove `node_modules` and `yarn.lock` / `package-lock.json` and then install dependencies again ( `npm install` or `yarn` )

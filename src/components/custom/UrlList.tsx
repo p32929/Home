@@ -55,7 +55,10 @@ const UrlList: React.FC<Props> = (props) => {
                         return <ContextMenu key={urlIndex}>
                             <ContextMenuTrigger>
                                 <a className="w-full" href={item.link}>
-                                    <Button style={{ color: colorNeon, borderColor: color }} className="capitalize w-full" variant="outline">
+                                    <Button style={{
+                                        color: colorNeon,
+                                        borderColor: color,
+                                    }} className="w-full" variant="outline">
                                         {item.title}
                                     </Button>
                                 </a>

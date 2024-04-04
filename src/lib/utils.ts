@@ -103,7 +103,7 @@ export async function getColorFixedUrls(urls: IUrlButton[]) {
     const promises = batch.map(async (url) => {
       if (!url.colors) {
         try {
-          const res = await Server.getDominantColors(`http://www.google.com/s2/favicons?&sz=64&domain=${url.link}`);
+          const res = await Server.getDominantColors(`https://s2.googleusercontent.com/s2/favicons?sz=32&domain=${url.link}`);
           if (!res.error) {
             // console.log(`res.response`, `${url.link} == #${res.response.data[0]}`);
             // Set color property directly on the current URL object

@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://p32929.github.io/Home",
   "scripts": {
     "dev": "vite",
     "build": "tsc-silent -p tsconfig.json --suppress @ && vite build && tsx preserver.ts",

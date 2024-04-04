@@ -24,7 +24,7 @@ export interface IStates {
 
 async function onDataChange(urls: IUrlButton[]) {
     const nurls = await getColorFixedUrls(urls)
-    localStorage.setItem(Constants.STORAGE, JSON.stringify(urls))
+    localStorage.setItem(Constants.STORAGE, JSON.stringify(nurls))
 }
 
 export class Controller {

@@ -1,6 +1,6 @@
 import { Download, Home, Plus, Share } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { IMenuButtons } from "@/lib/Models";
+import { IMenuButtons, IUrlButton } from "@/lib/Models";
 import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
 
@@ -25,8 +25,15 @@ const Header: React.FC<Props> = (props) => {
             icon: Share,
             title: 'Export',
             onClick: () => {
+                const urls: IUrlButton[] = []
+                for (var i = 0; i < states.urls.length; i++) {
+                    urls.push({
+                        link: states.urls[i].link,
+                        title: states.urls[i].title,
+                    })
+                }
                 controller.setState({
-                    exportText: JSON.stringify(states.urls, null, 4)
+                    exportText: JSON.stringify(urls, null, 4)
                 })
             }
         },

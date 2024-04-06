@@ -38,8 +38,19 @@ export const setSavedData = async (urls?: IUrlButton[]) => {
     }
     controller.setState({
       urls: urls,
+      isImportDialogOpen: false,
     });
   } catch (e) {
     // Handle error
+  }
+}
+
+export function getHostFromURL(url: string): string {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.hostname;
+  } catch (e) {
+    console.error("Invalid URL:", url);
+    return "";
   }
 }

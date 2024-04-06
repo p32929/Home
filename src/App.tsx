@@ -9,26 +9,10 @@ import ExportDialog from "@/components/custom/ExportDialog";
 import HelperTexts from "@/components/custom/HelperTexts";
 import ImportDialog from "@/components/custom/ImportDialog";
 import { useEffect } from "react";
-import { Constants } from "@/lib/Constants";
-import { IUrlButton } from "@/lib/Models";
-import { Server } from "@/lib/Server";
-import { getColorFixedUrls } from "@/lib/utils";
+import { setSavedData } from "@/lib/utils";
 
 function App() {
   const states = useSelector(() => controller.states);
-
-  const setSavedData = async () => {
-    try {
-      const urls = JSON.parse(localStorage.getItem(Constants.STORAGE) ?? "[]") as IUrlButton[];
-      const nurls = await getColorFixedUrls(urls)
-      controller.setState({
-        urls: nurls,
-      });
-    } catch (e) {
-      // Handle error
-    }
-
-  }
 
   useEffect(() => {
     setSavedData()

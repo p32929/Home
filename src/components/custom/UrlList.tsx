@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from '@/components/ui/context-menu';
 import { IMenuButtons } from '@/lib/Models';
 import { Pencil, Trash } from 'lucide-react';
-import { createGlowingEffect, createNeonGlowEffect, findColorWithMediumLightness } from '@/lib/utils';
 
 interface Props {
 
@@ -48,17 +47,13 @@ const UrlList: React.FC<Props> = (props) => {
             < div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2" >
                 {
                     states.urls.map((item, urlIndex) => {
-                        const medColor = findColorWithMediumLightness(item.colors)
-                        const color = createGlowingEffect(medColor)
-                        const colorNeon = createNeonGlowEffect(medColor)
+
 
                         return <ContextMenu key={urlIndex}>
                             <ContextMenuTrigger>
                                 <a className="w-full" href={item.link}>
-                                    <Button style={{
-                                        color: colorNeon,
-                                        borderColor: color,
-                                    }} className="w-full" variant="outline">
+                                    <Button className="w-full" variant="outline">
+                                        <img className='w-4 h-4 rounded-sm mr-2' src={`https://sporting-ivory-emu.faviconkit.com/chat.openai.com/64`} />
                                         {item.title}
                                     </Button>
                                 </a>

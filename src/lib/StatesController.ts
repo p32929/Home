@@ -2,7 +2,6 @@ import { state, action, createStore } from 'usm-redux';
 import { compose } from 'redux';
 import { IUrlButton } from '@/lib/Models';
 import { Constants } from '@/lib/Constants';
-import { getColorFixedUrls } from '@/lib/utils';
 
 const composeEnhancers =
     // @ts-ignore
@@ -23,8 +22,7 @@ export interface IStates {
 }
 
 async function onDataChange(urls: IUrlButton[]) {
-    const nurls = await getColorFixedUrls(urls)
-    localStorage.setItem(Constants.STORAGE, JSON.stringify(nurls))
+    localStorage.setItem(Constants.STORAGE, JSON.stringify(urls))
 }
 
 export class Controller {

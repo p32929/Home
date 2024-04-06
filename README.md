@@ -2,7 +2,7 @@
 A Simple homepage extension created using Shadcn, React, TypeScript, usm-redux etc
 
 # Screenshot
-![Screenshot](https://github.com/p32929/Home/assets/6418354/89a9d41a-45c4-4be3-8fa7-2f5e0799d1ce)
+![image](https://github.com/p32929/Home/assets/6418354/9d8a6f3d-2d66-49dd-a592-ec047c689505)
 
 # Installation Instructions
 To install the application, follow these steps:

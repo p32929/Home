@@ -37,15 +37,17 @@ const Header: React.FC<Props> = (props) => {
             icon: Share,
             title: 'Export',
             onClick: () => {
+                const data = states.data
                 const urls: IUrlButton[] = []
-                for (var i = 0; i < states.urls.length; i++) {
+                for (var i = 0; i < states.data.urls.length; i++) {
                     urls.push({
-                        link: states.urls[i].link,
-                        title: states.urls[i].title,
+                        link: states.data.urls[i].link,
+                        title: states.data.urls[i].title,
                     })
                 }
+                data.urls = urls
                 controller.setState({
-                    exportText: JSON.stringify(urls, null, 4)
+                    exportText: JSON.stringify(data, null, 4)
                 })
             }
         },

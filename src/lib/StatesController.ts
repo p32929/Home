@@ -1,6 +1,6 @@
 import { state, action, createStore } from 'usm-redux';
 import { compose } from 'redux';
-import { IUrlButton } from '@/lib/Models';
+import { IData, IUrlButton } from '@/lib/Models';
 import { Constants } from '@/lib/Constants';
 
 const composeEnhancers =
@@ -13,7 +13,7 @@ const composeEnhancers =
         : compose;
 
 export interface IStates {
-    urls: IUrlButton[],
+    data: IData,
     // 
     isAddDialogOpen: boolean,
     isImportDialogOpen: boolean,
@@ -21,14 +21,17 @@ export interface IStates {
     exportText: string,
 }
 
-async function onDataChange(urls: IUrlButton[]) {
-    localStorage.setItem(Constants.STORAGE, JSON.stringify(urls))
+async function onDataChange(data: IData) {
+    localStorage.setItem(Constants.STORAGE, JSON.stringify(data))
 }
 
 export class Controller {
     @state
     states: IStates = {
-        urls: [],
+        data: {
+            urls: [],
+            sortOption: "Creation"
+        },
         // 
         isAddDialogOpen: false,
         isImportDialogOpen: false,
@@ -43,32 +46,32 @@ export class Controller {
             ...state,
         }
 
-        onDataChange(this.states.urls)
+        onDataChange(this.states.data)
     }
 
     @action
     addUrl(url: IUrlButton) {
-        this.states.urls.push(url)
+        this.states.data.urls.push(url)
         this.states.isAddDialogOpen = false
         this.states.editingUrlIndex = -1
 
-        onDataChange(this.states.urls)
+        onDataChange(this.states.data)
     }
 
     @action
     editUrl(url: IUrlButton) {
-        this.states.urls[this.states.editingUrlIndex] = url
+        this.states.data.urls[this.states.editingUrlIndex] = url
         this.states.isAddDialogOpen = false
         this.states.editingUrlIndex = -1
 
-        localStorage.setItem(Constants.STORAGE, JSON.stringify(this.states.urls))
+        localStorage.setItem(Constants.STORAGE, JSON.stringify(this.states.data))
     }
 
     @action
     deleteUrl(index: number) {
-        this.states.urls.splice(index, 1)
+        this.states.data.urls.splice(index, 1)
 
-        onDataChange(this.states.urls)
+        onDataChange(this.states.data)
     }
 }
 

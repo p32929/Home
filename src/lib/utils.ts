@@ -1,5 +1,5 @@
 import { Constants } from "@/lib/Constants";
-import { IUrlButton } from "@/lib/Models";
+import { IData, IUrlButton } from "@/lib/Models";
 import { controller } from "@/lib/StatesController";
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
@@ -31,13 +31,13 @@ export const scrollToView = (id: string) => {
   console.log(`Scrolled`);
 };
 
-export const setSavedData = async (urls?: IUrlButton[]) => {
+export const setSavedData = async (data?: IData) => {
   try {
-    if (urls === undefined) {
-      urls = JSON.parse(localStorage.getItem(Constants.STORAGE) ?? "[]") as IUrlButton[];
+    if (data === undefined) {
+      data = JSON.parse(localStorage.getItem(Constants.STORAGE) ?? "[]") as IData;
     }
     controller.setState({
-      urls: urls,
+      data: data,
       isImportDialogOpen: false,
     });
   } catch (e) {

@@ -24,7 +24,7 @@ const EditDialog: React.FC<Props> = (props) => {
         reset,
     } = useForm<IUrlButton>({
         // defaultValues: states.urls[states.editingUrlIndex]
-        values: states.urls[states.editingUrlIndex],
+        values: states.data.urls[states.editingUrlIndex],
     })
 
     const onSubmit: SubmitHandler<IUrlButton> = (data) => {

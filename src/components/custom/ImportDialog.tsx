@@ -34,8 +34,8 @@ const ImportDialog: React.FC<Props> = () => {
     const validateJSON = (jsonString: string) => {
         try {
             const jsonData = JSON.parse(jsonString);
-            if (Array.isArray(jsonData)) {
-                for (const item of jsonData) {
+            if (Array.isArray(jsonData.urls)) {
+                for (const item of jsonData.urls) {
                     if (!item.title || !item.link || item.title.length > 20) {
                         return false;
                     }

@@ -3,7 +3,7 @@ import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
 import { Button } from '@/components/ui/button';
 import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from '@/components/ui/context-menu';
-import { IMenuButtons } from '@/lib/Models';
+import { IMenuButtons, IUrlContextMenuButtons } from '@/lib/Models';
 import { Pencil, Trash } from 'lucide-react';
 import { getHostFromURL } from '@/lib/utils';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -15,7 +15,7 @@ interface Props {
 const UrlList: React.FC<Props> = (props) => {
     const states = useSelector(() => controller.states);
 
-    const menuButtons: IMenuButtons[] = [
+    const menuButtons: IUrlContextMenuButtons[] = [
         {
             icon: Pencil,
             title: 'Edit',
@@ -38,7 +38,7 @@ const UrlList: React.FC<Props> = (props) => {
     return (
         <>
             {
-                states.urls.length == 0 && (
+                states.data.urls.length == 0 && (
                     < div className="px-8 py-6" >
                         <p className="text-xl font-semibold tracking-tight">
                             Add your first URL by clicking on the + button
@@ -48,7 +48,7 @@ const UrlList: React.FC<Props> = (props) => {
             }
             < div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2" >
                 {
-                    states.urls.map((item, urlIndex) => {
+                    states.data.urls.map((item, urlIndex) => {
                         // const imgUrl = `https://sporting-ivory-emu.faviconkit.com/${getHostFromURL(item.link)}/64`
                         const imgUrl = `https://favicon.yandex.net/favicon/${getHostFromURL(item.link)}?size=32`
 

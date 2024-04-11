@@ -11,8 +11,19 @@ export interface IMenuButtons {
     }[]
 }
 
+export interface IUrlContextMenuButtons {
+    icon: LucideIcon
+    title: string
+    onClick: (param?: any) => void
+}
+
 export interface IUrlButton {
     title: string
     link: string
     icon?: string
+}
+
+export interface IData {
+    urls: IUrlButton[],
+    sortOption: "Creation" | "Name" | "Clicks"
 }

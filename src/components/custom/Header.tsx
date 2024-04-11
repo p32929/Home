@@ -1,4 +1,4 @@
-import { Download, Home, Plus, Share, Settings, User, ArrowDownWideNarrow, Mail, MessageSquare, PlusCircle, UserPlus, Cloud, CreditCard, Github, Keyboard, LifeBuoy, LogOut, Users, CalendarPlus, ArrowDownAZ, MousePointerClick } from "lucide-react";
+import { Download, Home, Plus, Share, Settings, User, ArrowDownWideNarrow, Mail, MessageSquare, PlusCircle, UserPlus, Cloud, CreditCard, Github, Keyboard, LifeBuoy, LogOut, Users, CalendarPlus, ArrowDownAZ, MousePointerClick, EllipsisVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { IMenuButtons, IUrlButton } from "@/lib/Models";
 import { controller } from '@/lib/StatesController';
@@ -81,16 +81,10 @@ const Header: React.FC<Props> = (props) => {
                     </div>
 
                     <div className="flex flex-row items-center space-x-2">
-                        <Button title={addButton.title} onClick={addButton.onClick} size='sm' variant="outline">
-                            <addButton.icon className='w-3 h-3' />
-                        </Button>
-
-
-
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button title={`Options`} size='sm' variant="outline">
-                                    <Settings className='w-3 h-3' />
+                                    <EllipsisVertical className='w-3 h-3' />
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56">
@@ -120,7 +114,7 @@ const Header: React.FC<Props> = (props) => {
                                                 </DropdownMenuSub>
                                             }
                                             else {
-                                                return <DropdownMenuItem key={index}>
+                                                return <DropdownMenuItem key={index} onClick={item.onClick}>
                                                     <item.icon className="mr-2 h-4 w-4" />
                                                     <span>{item.title}</span>
                                                 </DropdownMenuItem>
@@ -130,6 +124,10 @@ const Header: React.FC<Props> = (props) => {
                                 </DropdownMenuGroup>
                             </DropdownMenuContent>
                         </DropdownMenu>
+
+                        <Button title={addButton.title} onClick={addButton.onClick} size='sm' variant="outline">
+                            <addButton.icon className='w-3 h-3' />
+                        </Button>
 
                     </div>
 

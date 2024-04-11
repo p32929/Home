@@ -23,6 +23,7 @@ export interface IStates {
 
 async function onDataChange(data: IData) {
     localStorage.setItem(Constants.STORAGE, JSON.stringify(data))
+    console.log(`New data saved`)
 }
 
 export class Controller {
@@ -40,13 +41,15 @@ export class Controller {
     }
 
     @action
-    setState(state: Partial<IStates>) {
+    setState(state: Partial<IStates>, save: boolean = true) {
         this.states = {
             ...this.states,
             ...state,
         }
 
-        onDataChange(this.states.data)
+        if (save) {
+            onDataChange(this.states.data)
+        }
     }
 
     @action
@@ -74,13 +77,20 @@ export class Controller {
         this.states.isAddDialogOpen = false
         this.states.editingUrlIndex = -1
 
-        localStorage.setItem(Constants.STORAGE, JSON.stringify(this.states.data))
+        onDataChange(this.states.data)
     }
 
     @action
     deleteUrl(index: number) {
         this.states.data.urls.splice(index, 1)
 
+        onDataChange(this.states.data)
+    }
+
+    @action
+    increaseClick(urlIndex: number) {
+        const totalClicks = (this.states.data.urls[urlIndex]?.clicks ?? 0) + 1
+        this.states.data.urls[urlIndex]['clicks'] = totalClicks
         onDataChange(this.states.data)
     }
 }

@@ -1,8 +1,10 @@
-import { Download, Home, Plus, Share } from "lucide-react";
+import { Download, Home, Plus, Share, Settings, User, ArrowDownWideNarrow, Mail, MessageSquare, PlusCircle, UserPlus, Cloud, CreditCard, Github, Keyboard, LifeBuoy, LogOut, Users, CalendarPlus, ArrowDownAZ, MousePointerClick } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { IMenuButtons, IUrlButton } from "@/lib/Models";
 import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
+import { DropdownMenu, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger } from "@/components/ui/dropdown-menu";
 
 interface Props {
 
@@ -10,6 +12,16 @@ interface Props {
 
 const Header: React.FC<Props> = (props) => {
     const states = useSelector(() => controller.states);
+
+    const addButton: IMenuButtons = {
+        icon: Plus,
+        title: 'Add',
+        onClick: () => {
+            controller.setState({
+                isAddDialogOpen: true,
+            })
+        }
+    }
 
     const menuButtons: IMenuButtons[] = [
         {
@@ -38,13 +50,22 @@ const Header: React.FC<Props> = (props) => {
             }
         },
         {
-            icon: Plus,
-            title: 'Add',
-            onClick: () => {
-                controller.setState({
-                    isAddDialogOpen: true,
-                })
-            }
+            icon: ArrowDownWideNarrow,
+            title: 'Sort',
+            radios: [
+                {
+                    title: "Creation",
+                    icon: CalendarPlus,
+                },
+                {
+                    title: "Name",
+                    icon: ArrowDownAZ,
+                },
+                {
+                    title: "Clicks",
+                    icon: MousePointerClick,
+                }
+            ]
         },
     ]
 
@@ -60,13 +81,55 @@ const Header: React.FC<Props> = (props) => {
                     </div>
 
                     <div className="flex flex-row items-center space-x-2">
-                        {
-                            menuButtons.map((item, index) => {
-                                return <Button key={index} title={item.title} onClick={item.onClick} size='sm' variant="outline">
-                                    <item.icon className='w-3 h-3' />
+                        <Button title={addButton.title} onClick={addButton.onClick} size='sm' variant="outline">
+                            <addButton.icon className='w-3 h-3' />
+                        </Button>
+
+
+
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button title={`Options`} size='sm' variant="outline">
+                                    <Settings className='w-3 h-3' />
                                 </Button>
-                            })
-                        }
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className="w-56">
+                                <DropdownMenuGroup>
+                                    {
+                                        menuButtons.map((item, index) => {
+                                            if (item.radios && item.radios?.length > 0) {
+                                                return <DropdownMenuSub>
+                                                    <DropdownMenuSubTrigger>
+                                                        <UserPlus className="mr-2 h-4 w-4" />
+                                                        <span>{item.title}</span>
+                                                    </DropdownMenuSubTrigger>
+                                                    <DropdownMenuPortal>
+                                                        <DropdownMenuSubContent>
+                                                            <DropdownMenuRadioGroup value={item.radios[2].title} onValueChange={undefined}>
+                                                                {
+                                                                    item.radios.map((ritem, rindex) => {
+                                                                        return <DropdownMenuRadioItem value={ritem.title}>
+                                                                            <ritem.icon key={rindex} className="mr-2 h-4 w-4" />
+                                                                            <span>{ritem.title}</span>
+                                                                        </DropdownMenuRadioItem>
+                                                                    })
+                                                                }
+                                                            </DropdownMenuRadioGroup>
+                                                        </DropdownMenuSubContent>
+                                                    </DropdownMenuPortal>
+                                                </DropdownMenuSub>
+                                            }
+                                            else {
+                                                return <DropdownMenuItem key={index}>
+                                                    <item.icon className="mr-2 h-4 w-4" />
+                                                    <span>{item.title}</span>
+                                                </DropdownMenuItem>
+                                            }
+                                        })
+                                    }
+                                </DropdownMenuGroup>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
 
                     </div>
 

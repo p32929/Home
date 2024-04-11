@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Button } from '@/components/ui/button';
 import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from '@/components/ui/context-menu';
 import { IMenuButtons, IUrlButton, IUrlContextMenuButtons } from '@/lib/Models';
-import { Pencil, Trash } from 'lucide-react';
+import { Circle, Pencil, Trash } from 'lucide-react';
 import { getHostFromURL } from '@/lib/utils';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -17,7 +17,6 @@ const UrlList: React.FC<Props> = (props) => {
 
     const menuButtons: IUrlContextMenuButtons[] = [
         {
-            icon: Pencil,
             title: 'Edit',
             onClick: (param: number) => {
                 console.log(`edit`, param)
@@ -27,10 +26,15 @@ const UrlList: React.FC<Props> = (props) => {
             }
         },
         {
-            icon: Trash,
             title: 'Delete',
             onClick: (param: number) => {
                 controller.deleteUrl(param)
+            }
+        },
+        {
+            title: 'Icon',
+            onClick: (param: number) => {
+
             }
         },
     ]

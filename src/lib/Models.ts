@@ -12,7 +12,6 @@ export interface IMenuButtons {
 }
 
 export interface IUrlContextMenuButtons {
-    icon: LucideIcon
     title: string
     onClick: (param?: any) => void
 }

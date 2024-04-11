@@ -23,7 +23,9 @@ export interface IUrlButton {
     icon?: string
 }
 
+export type TSortOptions = "Creation" | "Name" | "Clicks"
+
 export interface IData {
     urls: IUrlButton[],
-    sortOption: "Creation" | "Name" | "Clicks"
+    sortOption: TSortOptions
 }

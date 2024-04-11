@@ -50,6 +50,16 @@ export class Controller {
     }
 
     @action
+    setData(data: Partial<IData>) {
+        this.states.data = {
+            ...this.states.data,
+            ...data,
+        }
+
+        onDataChange(this.states.data)
+    }
+
+    @action
     addUrl(url: IUrlButton) {
         this.states.data.urls.push(url)
         this.states.isAddDialogOpen = false

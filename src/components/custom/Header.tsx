@@ -1,6 +1,6 @@
 import { Download, Home, Plus, Share, Settings, User, ArrowDownWideNarrow, Mail, MessageSquare, PlusCircle, UserPlus, Cloud, CreditCard, Github, Keyboard, LifeBuoy, LogOut, Users, CalendarPlus, ArrowDownAZ, MousePointerClick, EllipsisVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { IMenuButtons, IUrlButton } from "@/lib/Models";
+import { IMenuButtons, IUrlButton, TSortOptions } from "@/lib/Models";
 import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
 import { DropdownMenu, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
@@ -71,6 +71,12 @@ const Header: React.FC<Props> = (props) => {
         },
     ]
 
+    const onChangeSortOption = (v: string) => {
+        controller.setData({
+            sortOption: v as TSortOptions,
+        })
+    }
+
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="flex h-14 w-full items-center px-6">
@@ -101,7 +107,7 @@ const Header: React.FC<Props> = (props) => {
                                                     </DropdownMenuSubTrigger>
                                                     <DropdownMenuPortal>
                                                         <DropdownMenuSubContent>
-                                                            <DropdownMenuRadioGroup value={item.radios[2].title} onValueChange={undefined}>
+                                                            <DropdownMenuRadioGroup value={states.data.sortOption} onValueChange={onChangeSortOption}>
                                                                 {
                                                                     item.radios.map((ritem, rindex) => {
                                                                         return <DropdownMenuRadioItem value={ritem.title}>

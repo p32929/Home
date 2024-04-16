@@ -13,7 +13,7 @@ export interface IMenuButtons {
 
 export interface IUrlContextMenuButtons {
     title: string
-    onClick: (param?: any) => void
+    onClick: (param?: any, item?: any) => void
 }
 
 export interface IUrlButton {

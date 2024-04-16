@@ -34,9 +34,10 @@ const UrlList: React.FC<Props> = (props) => {
         },
         {
             title: 'Change Icon',
-            onClick: (param: number) => {
+            onClick: (_param: number, item: any) => {
+                console.log(`item`, item)
                 controller.setState({
-                    changingIconUrl: states.data.urls[param],
+                    changingIconUrl: item,
                 })
             }
         },
@@ -106,13 +107,13 @@ const UrlList: React.FC<Props> = (props) => {
             }
             < div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2" >
                 {
-                    getUrls().map((item, urlIndex) => {
+                    getUrls().map((urlItem, urlIndex) => {
                         return <ContextMenu key={urlIndex}>
                             <ContextMenuTrigger>
-                                <a className="w-full" href={item.link} onClick={() => { onUrlClicked(item.link) }}>
+                                <a className="w-full" href={urlItem.link} onClick={() => { onUrlClicked(urlItem.link) }}>
                                     <Button className="w-full justify-start" variant="outline">
-                                        <ImgOrIcon imgUrl={getImgUrl(item)} />
-                                        {item.title}
+                                        <ImgOrIcon imgUrl={getImgUrl(urlItem)} />
+                                        {urlItem.title}
                                     </Button>
                                 </a>
                             </ContextMenuTrigger>
@@ -121,7 +122,7 @@ const UrlList: React.FC<Props> = (props) => {
                                 {
                                     menuButtons.map((item, index) => {
                                         return <ContextMenuItem key={index} onClick={() => {
-                                            item.onClick(urlIndex)
+                                            item.onClick(urlIndex, urlItem)
                                         }}>
                                             {item.title}
                                         </ContextMenuItem>

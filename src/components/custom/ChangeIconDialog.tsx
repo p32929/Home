@@ -7,7 +7,9 @@ import { IUrlButton } from "@/lib/Models";
 import { useForm, SubmitHandler } from "react-hook-form"
 import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
-import { cn } from "@/lib/utils";
+import { cn, getImgUrl } from "@/lib/utils";
+import ImgOrIcon from "@/components/custom/ImgOrIcon";
+import { useEffect, useState } from "react";
 
 
 interface Props {
@@ -16,6 +18,7 @@ interface Props {
 
 const ChangeIconDialog: React.FC<Props> = (props) => {
     const states = useSelector(() => controller.states);
+    const [item, setItem] = useState<IUrlButton>()
 
     const {
         register,
@@ -23,12 +26,16 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
         formState: { errors },
         reset,
     } = useForm<IUrlButton>({
-        // defaultValues: states.urls[states.editingUrlIndex]
-        // values: states.data.urls[states.editingUrlIndex],
+        values: item,
     })
 
+    useEffect(() => {
+        // @ts-ignore
+        setItem(states.changingIconUrl)
+    }, [states.changingIconUrl])
+
     const onSubmit: SubmitHandler<IUrlButton> = (data) => {
-        controller.editUrl(data,)
+        controller.editUrl(data)
     }
 
     return (
@@ -49,18 +56,17 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
                 </DialogHeader>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="grid gap-4 py-4">
-                        <div className="grid grid-cols-4 items-center gap-4">
-                            <Label className="text-right">
-                                Icon
-                            </Label>
-                            <Input
-                                {...register("icon", { required: true, maxLength: 20, })}
-                                className={cn("col-span-3", errors.title ? "focus-visible:ring-red-500" : "")}
-                            />
-                        </div>
+                    <div className="flex flex-col gap-4 py-4">
+                        <Input
+                            placeholder="Icon URL / Color code"
+                            {...register("icon", { required: true, maxLength: 20, })}
+                            className={cn("col-span-3", errors.icon ? "focus-visible:ring-red-500" : "")}
+                        />
 
-                        
+                        <Button className="w-full justify-start" variant="outline">
+                            <ImgOrIcon imgUrl={getImgUrl(item)} />
+                            {item?.title}
+                        </Button>
                     </div>
 
                     <DialogFooter>

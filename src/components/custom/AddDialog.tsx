@@ -30,9 +30,12 @@ const AddDialog: React.FC<Props> = (props) => {
 
     return (
         <Dialog open={states.isAddDialogOpen} onOpenChange={(open) => {
-            controller.setState({
-                isAddDialogOpen: open,
-            })
+            if (!open) {
+                controller.setState({
+                    isAddDialogOpen: open,
+                })
+            }
+            reset()
         }}>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -66,7 +69,7 @@ const AddDialog: React.FC<Props> = (props) => {
                     </div>
 
                     <DialogFooter>
-                        <Button  type="submit">Save</Button>
+                        <Button type="submit">Save</Button>
                     </DialogFooter>
 
                 </form>

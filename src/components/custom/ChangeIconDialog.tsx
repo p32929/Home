@@ -1,7 +1,6 @@
 
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { IUrlButton } from "@/lib/Models";
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -79,7 +78,7 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
                             className={cn("col-span-3", errors.icon ? "focus-visible:ring-red-500" : "")}
                         />
 
-                        <Button className="w-full justify-start" variant="outline">
+                        <Button type="button" className="w-full justify-start" variant="outline">
                             <ImgOrIcon imgUrl={getImgUrl(item)} icon={item?.icon} />
                             {item?.title}
                         </Button>

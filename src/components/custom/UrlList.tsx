@@ -3,10 +3,8 @@ import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
 import { Button } from '@/components/ui/button';
 import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from '@/components/ui/context-menu';
-import { IMenuButtons, IUrlButton, IUrlContextMenuButtons } from '@/lib/Models';
-import { Circle, Pencil, Trash } from 'lucide-react';
-import { getHostFromURL, getImgUrl } from '@/lib/utils';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { IUrlButton, IUrlContextMenuButtons } from '@/lib/Models';
+import { getImgUrl } from '@/lib/utils';
 import ImgOrIcon from '@/components/custom/ImgOrIcon';
 
 interface Props {

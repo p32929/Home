@@ -95,7 +95,7 @@ const UrlList: React.FC<Props> = (props) => {
     return (
         <>
             {
-                states.data.urls.length == 0 && (
+                states.data.urls?.length == 0 && (
                     < div className="px-8 py-6" >
                         <p className="text-xl font-semibold tracking-tight">
                             Add your first URL by clicking on the + button
@@ -105,7 +105,7 @@ const UrlList: React.FC<Props> = (props) => {
             }
             < div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2" >
                 {
-                    getUrls().map((urlItem, urlIndex) => {
+                    getUrls()?.map((urlItem, urlIndex) => {
                         return <ContextMenu key={urlIndex}>
                             <ContextMenuTrigger>
                                 <a className="w-full" href={urlItem.link} onClick={() => { onUrlClicked(urlItem.link) }}>

@@ -19,6 +19,7 @@ export interface IStates {
     isImportDialogOpen: boolean,
     editingUrlIndex: number,
     exportText: string,
+    changingIconUrl: IUrlButton | null,
 }
 
 async function onDataChange(data: IData) {
@@ -38,6 +39,7 @@ export class Controller {
         isImportDialogOpen: false,
         editingUrlIndex: -1,
         exportText: "",
+        changingIconUrl: null,
     }
 
     @action

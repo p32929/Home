@@ -54,3 +54,9 @@ export function getHostFromURL(url: string): string {
     return "";
   }
 }
+
+export function getImgUrl(item: IUrlButton) {
+  // const imgUrl = `https://sporting-ivory-emu.faviconkit.com/${getHostFromURL(item.link)}/64`
+  const imgUrl = `https://favicon.yandex.net/favicon/${getHostFromURL(item.link)}?size=32`
+  return imgUrl
+}

@@ -10,6 +10,7 @@ import HelperTexts from "@/components/custom/HelperTexts";
 import ImportDialog from "@/components/custom/ImportDialog";
 import { useEffect } from "react";
 import { setSavedData } from "@/lib/utils";
+import ChangeIconDialog from "@/components/custom/ChangeIconDialog";
 
 function App() {
   const states = useSelector(() => controller.states);
@@ -24,6 +25,7 @@ function App() {
       <EditDialog />
       <ExportDialog />
       <ImportDialog />
+      <ChangeIconDialog />
 
       <Header />
       <HelperTexts />

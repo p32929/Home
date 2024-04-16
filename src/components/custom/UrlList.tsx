@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from '@/components/ui/context-menu';
 import { IMenuButtons, IUrlButton, IUrlContextMenuButtons } from '@/lib/Models';
 import { Circle, Pencil, Trash } from 'lucide-react';
-import { getHostFromURL } from '@/lib/utils';
+import { getHostFromURL, getImgUrl } from '@/lib/utils';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import ImgOrIcon from '@/components/custom/ImgOrIcon';
 
 interface Props {
 
@@ -32,9 +33,11 @@ const UrlList: React.FC<Props> = (props) => {
             }
         },
         {
-            title: 'Icon',
+            title: 'Change Icon',
             onClick: (param: number) => {
-                // TODO: later
+                controller.setState({
+                    changingIconUrl: states.data.urls[param],
+                })
             }
         },
     ]
@@ -104,18 +107,11 @@ const UrlList: React.FC<Props> = (props) => {
             < div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2" >
                 {
                     getUrls().map((item, urlIndex) => {
-                        // const imgUrl = `https://sporting-ivory-emu.faviconkit.com/${getHostFromURL(item.link)}/64`
-                        const imgUrl = `https://favicon.yandex.net/favicon/${getHostFromURL(item.link)}?size=32`
-
                         return <ContextMenu key={urlIndex}>
                             <ContextMenuTrigger>
                                 <a className="w-full" href={item.link} onClick={() => { onUrlClicked(item.link) }}>
                                     <Button className="w-full justify-start" variant="outline">
-                                        <LazyLoadImage
-                                            id={`image-${urlIndex}`}
-                                            className='w-4 h-4 rounded-sm mr-3'
-                                            src={imgUrl}
-                                        />
+                                        <ImgOrIcon imgUrl={getImgUrl(item)} />
                                         {item.title}
                                     </Button>
                                 </a>

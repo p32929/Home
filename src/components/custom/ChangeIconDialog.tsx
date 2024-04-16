@@ -61,7 +61,7 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
                         <Input
                             placeholder="Icon URL / Color code"
                             {...register("icon", {
-                                required: true, onChange: (e) => {
+                                required: false, onChange: (e) => {
                                     console.log(`etv`, e.target.value)
                                     const value = e.target.value
 

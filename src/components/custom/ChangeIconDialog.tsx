@@ -52,7 +52,7 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
                 <DialogHeader>
                     <DialogTitle>Change icon</DialogTitle>
                     <DialogDescription>
-                        Enter an icon/image URL or a color code
+                        Enter an icon / image URL or a color code
                     </DialogDescription>
                 </DialogHeader>
 

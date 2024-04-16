@@ -35,7 +35,9 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
     }, [states.changingIconUrl])
 
     const onSubmit: SubmitHandler<IUrlButton> = (data) => {
-        controller.editUrl(data)
+        controller.setState({
+            changingIconUrl: null,
+        })
     }
 
     return (
@@ -60,7 +62,7 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
                         <Input
                             placeholder="Icon URL / Color code"
                             {...register("icon", {
-                                required: true, maxLength: 20, onChange: (e) => {
+                                required: true, onChange: (e) => {
                                     console.log(`etv`, e.target.value)
                                     const value = e.target.value
 

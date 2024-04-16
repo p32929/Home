@@ -16,10 +16,13 @@ const ImgOrIcon: React.FC<Props> = (props) => {
 
     if (icon) {
         if (icon.startsWith("#")) {
-            return <div className='w-4 h-4 rounded-sm mr-3' style={{ backgroundColor: 'red' }} />
+            return <div className='w-4 h-4 rounded-sm mr-3' style={{ backgroundColor: icon }} />
         }
         else {
-            return <div className='w-4 h-4 rounded-sm mr-3' style={{ backgroundColor: 'green' }} />
+            return <LazyLoadImage
+                className='w-4 h-4 rounded-sm mr-3'
+                src={icon}
+            />
         }
     }
     else {

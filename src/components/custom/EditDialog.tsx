@@ -28,7 +28,7 @@ const EditDialog: React.FC<Props> = (props) => {
     })
 
     const onSubmit: SubmitHandler<IUrlButton> = (data) => {
-        controller.editUrl(data,)
+        controller.editUrl(data)
     }
 
     return (

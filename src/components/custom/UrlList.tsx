@@ -112,7 +112,7 @@ const UrlList: React.FC<Props> = (props) => {
                             <ContextMenuTrigger>
                                 <a className="w-full" href={urlItem.link} onClick={() => { onUrlClicked(urlItem.link) }}>
                                     <Button className="w-full justify-start" variant="outline">
-                                        <ImgOrIcon imgUrl={getImgUrl(urlItem)} />
+                                        <ImgOrIcon imgUrl={getImgUrl(urlItem)} icon={urlItem.icon} />
                                         {urlItem.title}
                                     </Button>
                                 </a>

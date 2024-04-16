@@ -43,7 +43,7 @@ export class Controller {
     }
 
     @action
-    setState(state: Partial<IStates>, save: boolean = true) {
+    setState(state: Partial<IStates>) {
         this.states = {
             ...this.states,
             ...state,
@@ -72,7 +72,9 @@ export class Controller {
     }
 
     @action
-    editUrl(url: IUrlButton) {
+    editUrl(url: IUrlButton | undefined) {
+        if (!url) return
+
         this.states.data.urls[this.states.editingUrlIndex] = url
         this.states.isAddDialogOpen = false
         this.states.editingUrlIndex = -1
@@ -80,14 +82,15 @@ export class Controller {
         onDataChange(this.states.data)
     }
 
-    // @action
-    // editUrlIcon() {
-    //     this.states.data.urls[this.states.editingUrlIndex] = url
-    //     this.states.isAddDialogOpen = false
-    //     this.states.editingUrlIndex = -1
+    @action
+    editUrlIcon(url: IUrlButton | undefined) {
+        if (!url) return
 
-    //     onDataChange(this.states.data)
-    // }
+        this.states.data.urls[this.states.changingIconUrlIndex] = url
+        this.states.changingIconUrlIndex = -1
+
+        onDataChange(this.states.data)
+    }
 
     @action
     deleteUrl(index: number) {

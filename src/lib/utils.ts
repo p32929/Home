@@ -39,7 +39,7 @@ export const setSavedData = async (data?: IData) => {
     controller.setState({
       data: data,
       isImportDialogOpen: false,
-    }, false);
+    });
   } catch (e) {
     // Handle error
   }

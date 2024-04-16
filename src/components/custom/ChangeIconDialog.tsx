@@ -34,9 +34,9 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
     }, [states.changingIconUrlIndex])
 
     const onSubmit: SubmitHandler<IUrlButton> = (data) => {
-        controller.setState({
-            changingIconUrlIndex: -1,
-        })
+        // console.log(`data`, data)
+        controller.editUrlIcon(data)
+        reset()
     }
 
     return (

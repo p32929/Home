@@ -62,3 +62,12 @@ export function getImgUrl(item?: IUrlButton) {
   const imgUrl = `https://favicon.yandex.net/favicon/${getHostFromURL(item.link)}?size=32`
   return imgUrl
 }
+
+export function isColorCodeOrLink(value: string): boolean {
+  // Regular expression patterns for color code and URL
+  const colorCodePattern = /^#[0-9A-F]{6}$/i; // Matches # followed by six hexadecimal characters
+  const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/; // Matches URLs starting with ftp, http, or https
+
+  // Check if the value matches either pattern
+  return colorCodePattern.test(value) || urlPattern.test(value);
+}

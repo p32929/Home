@@ -20,7 +20,7 @@ const UrlList: React.FC<Props> = (props) => {
         {
             title: 'Edit',
             onClick: (param: number) => {
-                console.log(`edit`, param)
+                console.log(`edit param`, param)
                 controller.setState({
                     editingUrlIndex: param,
                 })
@@ -29,13 +29,15 @@ const UrlList: React.FC<Props> = (props) => {
         {
             title: 'Delete',
             onClick: (param: number) => {
+                console.log(`delete param`, param)
                 controller.deleteUrl(param)
             }
         },
         {
             title: 'Change Icon',
-            onClick: (_param: number, item: any) => {
-                console.log(`item`, item)
+            onClick: (param: number, item: any) => {
+                console.log(`ci item`, item)
+                console.log(`ci param`, param)
                 controller.setState({
                     changingIconUrl: item,
                 })

@@ -7,7 +7,7 @@ import { IUrlButton } from "@/lib/Models";
 import { useForm, SubmitHandler } from "react-hook-form"
 import { controller } from '@/lib/StatesController';
 import { useSelector } from 'react-redux';
-import { cn, getImgUrl } from "@/lib/utils";
+import { cn, getImgUrl, isColorCodeOrLink } from "@/lib/utils";
 import ImgOrIcon from "@/components/custom/ImgOrIcon";
 import { useEffect, useState } from "react";
 
@@ -40,12 +40,12 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
 
     return (
         <Dialog open={states.changingIconUrl !== null} onOpenChange={(open) => {
+            reset()
             if (!open) {
                 controller.setState({
                     changingIconUrl: null,
                 })
             }
-            reset()
         }}>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -59,12 +59,27 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
                     <div className="flex flex-col gap-4 py-4">
                         <Input
                             placeholder="Icon URL / Color code"
-                            {...register("icon", { required: true, maxLength: 20, })}
+                            {...register("icon", {
+                                required: true, maxLength: 20, onChange: (e) => {
+                                    console.log(`etv`, e.target.value)
+                                    const value = e.target.value
+
+                                    if (isColorCodeOrLink(value)) {
+                                        // @ts-ignore
+                                        setItem({
+                                            ...item,
+                                            icon: value,
+                                        })
+                                    }
+
+                                    return e
+                                }
+                            })}
                             className={cn("col-span-3", errors.icon ? "focus-visible:ring-red-500" : "")}
                         />
 
                         <Button className="w-full justify-start" variant="outline">
-                            <ImgOrIcon imgUrl={getImgUrl(item)} />
+                            <ImgOrIcon imgUrl={getImgUrl(item)} icon={item?.icon} />
                             {item?.title}
                         </Button>
                     </div>

@@ -49,9 +49,7 @@ export class Controller {
             ...state,
         }
 
-        if (save) {
-            onDataChange(this.states.data)
-        }
+        onDataChange(this.states.data)
     }
 
     @action

@@ -21,6 +21,7 @@ export interface IUrlButton {
     link: string
     icon?: string
     clicks?: number
+    index?: number
 }
 
 export type TSortOptions = "Creation" | "Name" | "Clicks"

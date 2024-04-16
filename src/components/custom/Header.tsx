@@ -44,7 +44,7 @@ const Header: React.FC<Props> = (props) => {
                         link: states.data.urls[i].link,
                         title: states.data.urls[i].title,
                         icon: states.data.urls[i]?.icon,
-                        clicks: states.data.urls[i]?.clicks,
+                        // clicks: states.data.urls[i]?.clicks,
                     })
                 }
                 data.urls = urls
@@ -53,24 +53,24 @@ const Header: React.FC<Props> = (props) => {
                 })
             }
         },
-        // {
-        //     icon: ArrowDownWideNarrow,
-        //     title: 'Sort',
-        //     radios: [
-        //         {
-        //             title: "Creation",
-        //             icon: CalendarPlus,
-        //         },
-        //         {
-        //             title: "Name",
-        //             icon: ArrowDownAZ,
-        //         },
-        //         {
-        //             title: "Clicks",
-        //             icon: MousePointerClick,
-        //         }
-        //     ]
-        // },
+        {
+            icon: ArrowDownWideNarrow,
+            title: 'Sort',
+            radios: [
+                {
+                    title: "Creation",
+                    icon: CalendarPlus,
+                },
+                {
+                    title: "Name",
+                    icon: ArrowDownAZ,
+                },
+                {
+                    title: "Clicks",
+                    icon: MousePointerClick,
+                }
+            ]
+        },
     ]
 
     const onChangeSortOption = (v: string) => {

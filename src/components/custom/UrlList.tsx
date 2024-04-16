@@ -42,6 +42,13 @@ const UrlList: React.FC<Props> = (props) => {
     ]
 
     const getUrls = () => {
+        function prepareForSort(urls: IUrlButton[]): IUrlButton[] {
+            for (var i = 0; i < urls?.length; i++) {
+                urls[i].index = i
+            }
+            return urls
+        }
+
         function sortUrlButtonsAlphabetically(urls: IUrlButton[]): IUrlButton[] {
             const copiedButtons = urls.slice(); // Create a shallow copy
             return copiedButtons.sort((a, b) => {
@@ -67,6 +74,7 @@ const UrlList: React.FC<Props> = (props) => {
         }
 
         const sortOption = states.data.sortOption
+        prepareForSort(states.data.urls)
         switch (sortOption) {
             case 'Creation':
                 return states.data.urls
@@ -120,7 +128,7 @@ const UrlList: React.FC<Props> = (props) => {
                                 {
                                     menuButtons.map((item, index) => {
                                         return <ContextMenuItem key={index} onClick={() => {
-                                            item.onClick(urlIndex)
+                                            item.onClick(urlItem.index)
                                         }}>
                                             {item.title}
                                         </ContextMenuItem>

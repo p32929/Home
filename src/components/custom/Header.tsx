@@ -43,7 +43,8 @@ const Header: React.FC<Props> = (props) => {
                     urls.push({
                         link: states.data.urls[i].link,
                         title: states.data.urls[i].title,
-                        // clicks: states.data.urls[i]?.clicks ?? 0,
+                        icon: states.data.urls[i]?.icon,
+                        clicks: states.data.urls[i]?.clicks,
                     })
                 }
                 data.urls = urls

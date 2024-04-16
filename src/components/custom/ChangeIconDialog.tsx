@@ -30,22 +30,21 @@ const ChangeIconDialog: React.FC<Props> = (props) => {
     })
 
     useEffect(() => {
-        // @ts-ignore
-        setItem(states.changingIconUrl)
-    }, [states.changingIconUrl])
+        setItem(states.data.urls[states.changingIconUrlIndex])
+    }, [states.changingIconUrlIndex])
 
     const onSubmit: SubmitHandler<IUrlButton> = (data) => {
         controller.setState({
-            changingIconUrl: null,
+            changingIconUrlIndex: -1,
         })
     }
 
     return (
-        <Dialog open={states.changingIconUrl !== null} onOpenChange={(open) => {
+        <Dialog open={states.changingIconUrlIndex !== -1} onOpenChange={(open) => {
             reset()
             if (!open) {
                 controller.setState({
-                    changingIconUrl: null,
+                    changingIconUrlIndex: -1,
                 })
             }
         }}>

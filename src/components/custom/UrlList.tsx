@@ -35,11 +35,9 @@ const UrlList: React.FC<Props> = (props) => {
         },
         {
             title: 'Change Icon',
-            onClick: (param: number, item: any) => {
-                console.log(`ci item`, item)
-                console.log(`ci param`, param)
+            onClick: (param: number) => {
                 controller.setState({
-                    changingIconUrl: item,
+                    changingIconUrlIndex: param,
                 })
             }
         },
@@ -124,7 +122,7 @@ const UrlList: React.FC<Props> = (props) => {
                                 {
                                     menuButtons.map((item, index) => {
                                         return <ContextMenuItem key={index} onClick={() => {
-                                            item.onClick(urlIndex, urlItem)
+                                            item.onClick(urlIndex)
                                         }}>
                                             {item.title}
                                         </ContextMenuItem>

@@ -52,24 +52,24 @@ const Header: React.FC<Props> = (props) => {
                 })
             }
         },
-        {
-            icon: ArrowDownWideNarrow,
-            title: 'Sort',
-            radios: [
-                {
-                    title: "Creation",
-                    icon: CalendarPlus,
-                },
-                {
-                    title: "Name",
-                    icon: ArrowDownAZ,
-                },
-                {
-                    title: "Clicks",
-                    icon: MousePointerClick,
-                }
-            ]
-        },
+        // {
+        //     icon: ArrowDownWideNarrow,
+        //     title: 'Sort',
+        //     radios: [
+        //         {
+        //             title: "Creation",
+        //             icon: CalendarPlus,
+        //         },
+        //         {
+        //             title: "Name",
+        //             icon: ArrowDownAZ,
+        //         },
+        //         {
+        //             title: "Clicks",
+        //             icon: MousePointerClick,
+        //         }
+        //     ]
+        // },
     ]
 
     const onChangeSortOption = (v: string) => {

@@ -19,7 +19,7 @@ export interface IStates {
     isImportDialogOpen: boolean,
     editingUrlIndex: number,
     exportText: string,
-    changingIconUrl: IUrlButton | null,
+    changingIconUrlIndex: number
 }
 
 async function onDataChange(data: IData) {
@@ -39,7 +39,7 @@ export class Controller {
         isImportDialogOpen: false,
         editingUrlIndex: -1,
         exportText: "",
-        changingIconUrl: null,
+        changingIconUrlIndex: -1,
     }
 
     @action
@@ -79,6 +79,15 @@ export class Controller {
 
         onDataChange(this.states.data)
     }
+
+    // @action
+    // editUrlIcon() {
+    //     this.states.data.urls[this.states.editingUrlIndex] = url
+    //     this.states.isAddDialogOpen = false
+    //     this.states.editingUrlIndex = -1
+
+    //     onDataChange(this.states.data)
+    // }
 
     @action
     deleteUrl(index: number) {

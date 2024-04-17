@@ -32,7 +32,14 @@ const UrlList: React.FC<Props> = (props) => {
             }
         },
         {
-            title: 'Change Icon',
+            title: 'Copy icon URL',
+            onClick: (param: number) => {
+                const imgUrl = getImgUrl(controller.states.data.urls[param])
+                navigator.clipboard.writeText(imgUrl)
+            }
+        },
+        {
+            title: 'Change icon',
             onClick: (param: number) => {
                 controller.setState({
                     changingIconUrlIndex: param,

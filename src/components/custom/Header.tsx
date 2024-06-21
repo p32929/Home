@@ -1,4 +1,4 @@
-import { Download, Home, Plus, Share, Settings, User, ArrowDownWideNarrow, Mail, MessageSquare, PlusCircle, UserPlus, Cloud, CreditCard, Github, Keyboard, LifeBuoy, LogOut, Users, CalendarPlus, ArrowDownAZ, MousePointerClick, EllipsisVertical } from "lucide-react";
+import { Download, Home, Plus, Share, Settings, User, ArrowDownWideNarrow, Mail, MessageSquare, PlusCircle, UserPlus, Cloud, CreditCard, Github, Keyboard, LifeBuoy, LogOut, Users, CalendarPlus, ArrowDownAZ, MousePointerClick, EllipsisVertical, GithubIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { IMenuButtons, IUrlButton, TSortOptions } from "@/lib/Models";
 import { controller } from '@/lib/StatesController';
@@ -70,6 +70,13 @@ const Header: React.FC<Props> = (props) => {
                     icon: MousePointerClick,
                 }
             ]
+        },
+        {
+            icon: GithubIcon,
+            title: 'Source Code',
+            onClick: (p) => {
+                window.open(`https://github.com/p32929/Home`, `_blank`)
+            }
         },
     ]
 

@@ -52,7 +52,7 @@ const AddDialog: React.FC<Props> = (props) => {
                                 Title
                             </Label>
                             <Input
-                                {...register("title", { required: true, maxLength: 20, })}
+                                {...register("title", { required: true })}
                                 className={cn("col-span-3", errors.title ? "focus-visible:ring-red-500" : "")}
                             />
                         </div>

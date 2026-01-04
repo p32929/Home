@@ -16,7 +16,7 @@ const Popup: React.FC = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const tab = tabs[0];
       if (tab) {
-        setTitle(tab.title?.slice(0, 20) || "");
+        setTitle(tab.title || "");
         setLink(tab.url || "");
       }
     });
@@ -85,7 +85,6 @@ const Popup: React.FC = () => {
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          maxLength={20}
           className="h-8 text-sm"
         />
       </div>

@@ -34,7 +34,12 @@ export const scrollToView = (id: string) => {
 export const setSavedData = async (data?: IData) => {
   try {
     if (data === undefined) {
-      data = JSON.parse(localStorage.getItem(Constants.STORAGE) ?? "[]") as IData;
+      const stored = localStorage.getItem(Constants.STORAGE);
+      const parsed = stored ? JSON.parse(stored) : {};
+      data = {
+        urls: Array.isArray(parsed.urls) ? parsed.urls : [],
+        sortOption: parsed.sortOption ?? "Creation",
+      };
     }
     controller.setState({
       data: data,

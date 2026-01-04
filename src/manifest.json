@@ -6,6 +6,11 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Save this page"
+  },
+  "permissions": ["activeTab"],
   "author": "p32929",
   "icons": { "16": "home.png", "128": "home.png" },
   "browser_specific_settings": {

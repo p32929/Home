@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Home - Clean New Tab",
+  "version": "1.0.0",
+  "description": "A clean new tab page: a clock, a search box and your favourite sites, one click away. Your links stay on your device.",
+  "chrome_url_overrides": { "newtab": "index.html" },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Add this page to Home",
+    "default_icon": { "16": "icons/icon-16.png", "32": "icons/icon-32.png", "48": "icons/icon-48.png" }
+  },
+  "permissions": ["storage", "activeTab", "favicon", "search"],
+  "icons": { "16": "icons/icon-16.png", "32": "icons/icon-32.png", "48": "icons/icon-48.png", "128": "icons/icon-128.png" },
+  "author": "p32929",
+  "homepage_url": "https://github.com/p32929/Home",
+  "browser_specific_settings": {
+    "gecko": { "id": "p32929-homepage-ext@p32929.github" }
+  }
+}

@@ -1,47 +1,55 @@
-# Home
+# Home - Clean New Tab
 
-A minimal new-tab / homepage browser extension — your own links on a clean page instead of whatever the browser puts there. Built with React, TypeScript, Vite and shadcn/ui.
+A clean new tab page for Chrome, Edge and Firefox: a big clock, a search box and your favourite sites one click away.
+Your links are stored only in your browser. Nothing is sent anywhere.
 
-Works in Chrome and Firefox.
+![Light](docs/screenshots/light.png)
 
-https://github.com/p32929/Home/assets/6418354/c28d4011-e72a-46ba-a816-ae8d60681758
+![Dark](docs/screenshots/dark.png)
 
-## Install
+## Install on Chrome
 
-Grab `dist.zip` from the [latest release](https://github.com/p32929/Home/releases/latest), or build it yourself:
+1. Download `Home.zip` from the [latest release](https://github.com/p32929/Home/releases/latest).
+2. Unzip it. You get a folder called `Home`. Keep it somewhere it will stay, like your Documents folder.
+3. Open `chrome://extensions` and turn on **Developer mode** (top right).
+4. Click **Load unpacked** and pick the `Home` folder. Open a new tab and you are done.
 
-```bash
-git clone https://github.com/p32929/Home.git
-cd Home
-npm install
-npm run build      # output lands in dist/
-```
+## Update to a new version
 
-Then load it:
+1. Download the new `Home.zip` and unzip it over the same `Home` folder, replacing the old files.
+2. On `chrome://extensions`, click the reload arrow on the Home card. Your links stay.
 
-**Chrome**
-1. Open `chrome://extensions` and turn on **Developer mode**
-2. Click **Load unpacked** and select the `dist` folder
+To be extra safe, use **Export links** first (see below). If you load the new version from a different folder, Chrome treats it as a new extension with no links, and **Import links** brings them back.
 
-**Firefox**
-1. Compress the `dist` folder into a ZIP
-2. Open `about:debugging#/runtime/this-firefox`
-3. Click **Load Temporary Add-on** and select the ZIP
+## Install on Edge
 
-## Develop
+Same steps as Chrome, but open `edge://extensions` and turn on **Developer mode** (left side).
 
-```bash
-npm run dev        # vite dev server
-```
+## Install on Firefox
 
-## Build failing?
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on** and pick `manifest.json` inside the `Home` folder.
 
-Delete `node_modules` and your lockfile (`yarn.lock` / `package-lock.json`), then install again:
+Firefox removes temporary add-ons when it closes, so this is good for trying it out.
 
-```bash
-rm -rf node_modules package-lock.json yarn.lock
-npm install
-```
+## Use it
+
+1. **Add a link:** click the **+ Add link** tile, or click the Home button in the toolbar on any page to add that page.
+2. **Edit or delete:** right-click a link, or hover it and click the three dots.
+3. **Reorder:** drag a link to a new place. Use the **⋯** menu (top right) to sort by name or by the ones you use most.
+4. **Search:** type in the search box and press Enter. An address like `github.com` opens the site; anything else is searched with your browser's search engine.
+5. **Theme:** the sun / moon button (top right) switches between light, dark and your system setting.
+6. **Back up or move your links:** **⋯** menu, then **Export links** saves a file. **Import links** loads it on any computer.
+
+Links you saved with the old version of Home are moved over by themselves the first time you open a new tab.
+
+![Menu](docs/screenshots/menu.png)
+
+## Build it yourself
+
+1. `npm install`
+2. `npm run zip` builds the extension into `dist/` and makes `release/Home.zip`.
+3. `npm run dev` runs the page in a normal browser tab while you work on it (links are then saved in that tab's local storage).
 
 ## License
 

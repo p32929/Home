@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 yarn.lock
+
+# build output
+release
